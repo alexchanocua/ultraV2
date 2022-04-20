@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ultraV2/static/css/main.3ceb2907.css",
+    "main.js": "/ultraV2/static/js/main.e4852dfb.js",
+    "static/media/basquiat.jpg": "/ultraV2/static/media/basquiat.7edd5802524480db7fcc.jpg",
+    "static/media/homeImage4.jpg": "/ultraV2/static/media/homeImage4.2062a48cc0e2f7d90053.jpg",
+    "static/media/homeImage.jpg": "/ultraV2/static/media/homeImage.26acebe7d7d1f61a9a12.jpg",
+    "static/media/registerImage.jpg": "/ultraV2/static/media/registerImage.26acebe7d7d1f61a9a12.jpg",
+    "static/media/ocean.jpeg": "/ultraV2/static/media/ocean.f0a104afcac028673e6c.jpeg",
+    "static/media/lock.jpg": "/ultraV2/static/media/lock.3155b2e854e8ed78a639.jpg",
+    "static/media/homeImage5.jpg": "/ultraV2/static/media/homeImage5.a0ed9d90ef850c51ad10.jpg",
+    "index.html": "/ultraV2/index.html",
+    "main.3ceb2907.css.map": "/ultraV2/static/css/main.3ceb2907.css.map",
+    "main.e4852dfb.js.map": "/ultraV2/static/js/main.e4852dfb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ceb2907.css",
+    "static/js/main.e4852dfb.js"
+  ]
+}
