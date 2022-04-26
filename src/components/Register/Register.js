@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Grid, TextField, Button, Fade } from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 import image from './registerImage.jpg';
@@ -26,21 +26,32 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [loading, setLoading] = useState(false);
     
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async () => {
         if(email && password && name) {
-            // registering user
-            const results = await axios.post('https://still-fjord-41724.herokuapp.com/register',
-                    {
-                        email: email,
-                        password: password,
-                        name: name
-                    }
-                );
-            // navigate("/userHome");       
+            try{
+                // registering user
+                const results = await axios.post('https://still-fjord-41724.herokuapp.com/register',
+                {
+                    email: email,
+                    password: password,
+                    name: name
+                }
+            );
+            // navigate("/userHome");   
+            } catch(error) {
+                setEmail('');
+                setPassword('');
+                setName('');
+            }
+                
         }
     }
+
+    useEffect(() => {
+        handleSubmit();
+    }, [loading]);
 
     return (
         <>
@@ -105,6 +116,7 @@ const Register = () => {
                     style={{fontFamily: "Courier New", backgroundColor: "rgba(0, 0, 0, 0.04)"} } 
                     color='inherit'
                     fullWidth
+                    disabled={!name && !email && !password}
                     onClick={handleSubmit}
                 >
                     register

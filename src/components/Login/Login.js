@@ -32,33 +32,32 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [invalidLogin, setInvalidLogin] = useState(false);
 
+    // makes API call to sign user in
     const handleSubmit = async () => {
         if(email && password) {
             try{
+                setLoading(true);
                 const response = await axios.post('https://still-fjord-41724.herokuapp.com/signin',
                     {
                         email: email,
                         password: password,
                     }
                 );
-                while(!response){
-                    setLoading(true);
-                }
-                
                 navigate("/userHome");  
             } catch(error) {
-                setLoading(false);
                 setEmail('');
                 setPassword('');
                 setInvalidLogin(true);
-            };
+            }
+            setLoading(false);
         }
         
     }
 
-    useEffect(() => {
-        handleSubmit();
-    },[loading]);
+    // checks if to display the loading bar
+    // useEffect(() => {
+    //     handleSubmit();
+    // },[loading]);
 
     return (
         <>
@@ -120,7 +119,7 @@ const Login = () => {
                             color='inherit'
                             fullWidth
                             disabled={!password && !email}
-                            onClick={() => {setLoading(true)}}
+                            onClick={handleSubmit}
                         >
                             login
                         </Button>
