@@ -27,9 +27,11 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
+    const [validReg, setValidReg] = useState(false);
     
     const handleSubmit = async () => {
         if(email && password && name) {
+            setLoading(true);
             try{
                 // registering user
                 const results = await axios.post('https://still-fjord-41724.herokuapp.com/register',
@@ -39,7 +41,7 @@ const Register = () => {
                     name: name
                 }
             );
-            // navigate("/userHome");   
+            navigate("/login");   
             } catch(error) {
                 setEmail('');
                 setPassword('');
@@ -47,11 +49,9 @@ const Register = () => {
             }
                 
         }
+        setLoading(false);
     }
 
-    useEffect(() => {
-        handleSubmit();
-    }, [loading]);
 
     return (
         <>
