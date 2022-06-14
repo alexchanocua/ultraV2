@@ -8,20 +8,25 @@ import Login from './components/Login/Login';
 import PreLandingPage from './components/PreLandingPage/PreLandingPage.js'
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
+import { AuthContextProvider } from './Context/AuthContext';
+import RegisterFirebase from './components/Register/RegisterFirebase';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
     <div  className="App">
-      <Router>
-        <Routes>
-          <Route path='/*' element={<PreLandingPage/>} />
-          <Route path='/home' element={<LandingPage/>} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/register' element={<Register/>} />
-          <Route path='/userHome' element={<Home />} />
-        </Routes>
-      </Router>
-      
+
+      <AuthContextProvider>
+        <Router>
+          <Routes>
+            <Route path='/*' element={<PreLandingPage/>} />
+            <Route path='/home' element={<LandingPage/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/register' element={<RegisterFirebase/>} />
+            <Route path='/userHome' element={<Home />} />
+          </Routes>
+        </Router>
+      </AuthContextProvider>
     </div>
   );
 }

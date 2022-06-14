@@ -1,14 +1,16 @@
+.home__container {
+	margin-top: 6rem;
+	margin-bottom: 5rem;
+}
 .homeImages {
-	display: block;
-	max-width:89%;
-	width:440px;
-	height: 400px;
-	margin-top: 2rem;
-	margin-bottom: 1rem;
+	width:20rem;
+	height: 20rem;
 	transition: all 1s;
-    border-bottom: 1px black;
 }
 
-#navBar {
-	width: 99vw;
+.imageContainer {
+	border-bottom: 1px solid lightgray ;
 }
+/* #navBar {
+	width: 99vw;
+} */
