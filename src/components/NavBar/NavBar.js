@@ -11,12 +11,17 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import ImageModal from '../ImageModal/ImageModal';
+import {UserAuth} from '../../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
 
 const pages = ['Products'];
-const settings = ['Logout'];
+const settings = ['Image','Upload', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
+  const {logout} = UserAuth();
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -33,6 +38,19 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = async () => {
+    try {
+        await logout();
+        navigate('/home');
+    } catch (e) {
+        console.log(e.message);
+    }
+  }
+
+  const handleUpload = () => {
+
   };
 
   return (
@@ -126,11 +144,19 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <Button onClick={handleLogout}>{setting}</Button>
                 </MenuItem>
-              ))}
+              ))} */}
+              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+                <ImageModal setImageList={props.setImageList}/>
+              </MenuItem>
+
+              <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
+              <Button onClick={handleLogout}>{settings[2]}</Button>
+              </MenuItem>
+             
             </Menu>
           </Box>
         </Toolbar>

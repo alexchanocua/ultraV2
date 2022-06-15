@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
-export default function Images() {
+export default function Images({imageList}) {
   return (
     <Box sx={{ width: 500, height: '80%', overflowY: 'scroll', padding:1.5 }}>
       <ImageList variant="masonry" cols={2} gap={8}>

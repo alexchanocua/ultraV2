@@ -1,4 +1,5 @@
 import {createContext, useContext, useEffect, useState} from 'react';
+import {auth, db, storage} from '../firebase';
 import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
@@ -6,7 +7,9 @@ import {
     onAuthStateChanged
     } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import {auth, db} from '../firebase';
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { v4 } from 'uuid';
+
 
 const UserContext = createContext();
 
@@ -29,6 +32,12 @@ export const AuthContextProvider = ({children}) => {
         return signOut(auth);
     }
 
+    const uploadImage = (image) => {
+        if(image == null) return;
+        const imageRef = ref(storage, `images/${image.name + v4()}`);
+        uploadBytes(imageRef, image)
+    }
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -40,7 +49,7 @@ export const AuthContextProvider = ({children}) => {
     },[]);
 
     return (
-        <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+        <UserContext.Provider value={{ createUser, user, logout, signIn, uploadImage }}>
             {children}
         </UserContext.Provider>
     )
