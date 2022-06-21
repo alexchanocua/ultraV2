@@ -16,10 +16,10 @@ import {UserAuth} from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
 
-const pages = ['Products'];
+const pages = [''];
 const settings = ['Image','Upload', 'Logout'];
 
-const ResponsiveAppBar = (props) => {
+const ResponsiveAppBar = () => {
   const {logout} = UserAuth();
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -66,7 +66,7 @@ const ResponsiveAppBar = (props) => {
             ultra
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -77,7 +77,7 @@ const ResponsiveAppBar = (props) => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -100,8 +100,8 @@ const ResponsiveAppBar = (props) => {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
-          </Box>
+            </Menu> */}
+          {/* </Box> */} */}
           <Typography
             variant="h6"
             noWrap
@@ -150,7 +150,7 @@ const ResponsiveAppBar = (props) => {
                 </MenuItem>
               ))} */}
               <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
-                <ImageModal setImageList={props.setImageList}/>
+                <ImageModal />
               </MenuItem>
 
               <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>

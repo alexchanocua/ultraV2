@@ -38,12 +38,12 @@ const Home = () => {
                     className="home__container"
                 >
                     {/* mapping all the images and displaying them */}
-                    {/* {imageList.map((url) =>
+                    {imageList.map((url) =>
                         <Grid item className="imageContainer"> 
-                            <img class="homeImages" loading='lazy' alt='logo' src={url}/>
-                        </Grid>)} */}
+                            <img className="homeImages" loading='lazy' alt='logo' src={url}/>
+                        </Grid>)}
                     <Grid item>
-                        <Images imageList={{imageList}}/>
+                        {/* <Images imageList={{imageList}}/> */}
                     </Grid>
                 </Grid>
                 <Footer/>
